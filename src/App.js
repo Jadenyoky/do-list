@@ -13,21 +13,36 @@ const App = () => {
           Add
         </button>
       </div>
-      <div className='contentNew'></div>
+      <div className='contentNew'>
+        <span className='highlight'></span>
+      </div>
     </div>
   );
 }
 
 export default App;
 
+
+
 function div(){
   const contentNew = document.querySelector('.contentNew')
-  const div = document.createElement('div')
+  const div = document.createElement('li')
   const inText = document.querySelector('#inText')
 
   div.classList.add('divStyle')
   contentNew.appendChild(div)
   div.innerHTML = inText.value
+
+  const btnDelete = document.createElement('button')
+  contentNew.appendChild(btnDelete)
+  btnDelete.classList.add('delStyle')
+
+  btnDelete.scrollIntoView()
+
+  btnDelete.addEventListener('click', function(){
+    div.remove()
+    btnDelete.remove()
+  })
 }
 
 function notWritten(){
